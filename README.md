@@ -1,6 +1,6 @@
 # taken?
 
-[![PyPI](https://img.shields.io/pypi/v/taken-gh)](https://pypi.org/project/taken-gh/)
+[![PyPI](https://img.shields.io/pypi/v/taken-gh?cacheSeconds=3600)](https://pypi.org/project/taken-gh/)
 [![CI](https://github.com/RogueAlg0/taken/actions/workflows/ci.yml/badge.svg)](https://github.com/RogueAlg0/taken/actions)
 [![License: MIT](https://img.shields.io/github/license/RogueAlg0/taken)](LICENSE)
 <!-- Static python badge: shields' pypi/pyversions reads trove classifiers,
@@ -88,7 +88,7 @@ piggybacks on GitHub's issue search API (the same source the web
 aggregators use) for raw candidates, then runs taken's full verification
 on each one and ranks the survivors. Only GO verdicts make the list.
 
-    taken --discover --language python --min-stars 50 --limit 10
+    taken --discover --language python --min-contributors 3 --limit 10
       6  octocat/hello-world#42  maintainer replied; updated 1d ago; repo pushed 0d ago
       4  octocat/other-repo#7    updated 3d ago; repo pushed 2d ago
 
@@ -138,9 +138,9 @@ tool call instead of shelling out to the CLI. It needs the same setup: `gh`
 installed and authenticated, and it only makes read-only API calls through
 your own login.
 
-Run it directly:
+Run it directly (the MCP server needs the optional `mcp` dependency):
 
-    uvx --from taken-gh taken-mcp
+    uvx --from "taken-gh[mcp]" taken-mcp
 
 Or add it to your MCP client config:
 
@@ -161,9 +161,14 @@ Three tools:
   verdicts, GO first, plus `recommendations` (just the GO targets), a
   verdict `summary`, and per-issue `friendly_labels` / `welcoming` markers
   so the safest issues to adopt stand out.
-- `discover_candidates(limit?, language?, label?, min_stars?, me?)`:
+- `discover_candidates(limit?, language?, label?, min_contributors?, me?)`:
   good-first-issue style candidates, verified and ranked, each marked with
   its first-time-friendly labels and contribution-welcome signals.
+
+`scan_repo` and `discover_candidates` include `effective_parameters` in every
+response so clients can see the resolved defaults and filters behind the
+results. Their MCP input schemas also describe each optional parameter's
+default.
 
 `taken` is published in the official
 [MCP Registry](https://registry.modelcontextprotocol.io) as

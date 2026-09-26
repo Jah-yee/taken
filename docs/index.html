@@ -61,7 +61,7 @@
 
 <h1>taken?</h1>
 <p class="badges">
-  <a href="https://pypi.org/project/taken-gh/"><img src="https://img.shields.io/pypi/v/taken-gh" alt="PyPI version"></a>
+  <a href="https://pypi.org/project/taken-gh/"><img src="https://img.shields.io/pypi/v/taken-gh?cacheSeconds=3600" alt="PyPI version"></a>
   <a href="https://github.com/RogueAlg0/taken/actions"><img src="https://github.com/RogueAlg0/taken/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
   <a href="https://github.com/RogueAlg0/taken/blob/main/LICENSE"><img src="https://img.shields.io/github/license/RogueAlg0/taken" alt="License: MIT"></a>
   <a href="https://pypi.org/project/taken-gh/"><img src="https://img.shields.io/badge/python-%3E%3D3.10-blue" alt="Python >= 3.10"></a>
@@ -110,7 +110,7 @@ taken https://github.com/owner/repo/issues/123
 taken owner/repo#123 --json        # full findings as JSON
 taken owner/repo#123 --me mylogin  # ignore your own comments
 taken owner/repo --label "good first issue" --limit 10   # scan a repo
-taken --discover --language python --min-stars 50        # find candidates</code></pre>
+taken --discover --language python --min-contributors 3        # find candidates</code></pre>
 <p>Exit codes: 0 means <span class="verdict go">GO</span>, 1 means
 <span class="verdict taken">TAKEN</span>, 2 means
 <span class="verdict caution">CAUTION</span>, 3 means something broke.</p>
@@ -128,7 +128,7 @@ issues with a tool call instead of shelling out to the CLI
 <code>discover_candidates</code>). It is listed in the official
 <a href="https://registry.modelcontextprotocol.io">MCP Registry</a> as
 <code>io.github.RogueAlg0/taken</code>.</p>
-<pre><code>uvx --from taken-gh taken-mcp</code></pre>
+<pre><code>uvx --from "taken-gh[mcp]" taken-mcp</code></pre>
 
 <h2>How the verdict works</h2>
 <p><span class="verdict taken">TAKEN</span> wins over
@@ -149,8 +149,8 @@ always prints its evidence so you can judge for yourself.</p>
   Built with AI assistance, openly disclosed.
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
-<script src="https://cdn.jsdelivr.net/pyodide/v0.27.4/full/pyodide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js" integrity="sha384-/nfmYPUzWMS6v2atn8hbljz7NE0EI1iGx34lJaNzyVjWGDzMv+ciUZUeJpKA3Glc" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.27.4/full/pyodide.js" integrity="sha384-tSKqtqt5i9t+BKiXGOGifQBi2UQGv0DKKTl7grFv4cS4c8bc/Zc+PI+1O2Bj+xtC" crossorigin="anonymous"></script>
 <script src="pyconsole.js"></script>
 </body>
 </html>
